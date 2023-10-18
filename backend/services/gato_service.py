@@ -5,9 +5,9 @@ class GatoService:
     def __init__(self, session):
         self.session = session
 
-    def criar_gato(self, nome, tipo, idade, sexo, raca, castrado, vacinado, vermifugado, antiparasitado, historico_saude,
-                   comportamento, uso_medicacao, tipo_medicacao, criacao, exame_fiv_felv, foto_gato, foto_exame,
-                   foto_carteira, tutor_id):
+    def criar_gato(self, nome, tipo, idade, sexo, raca, castrado, vacinado, vermifugado, antiparasitado,
+                   historico_saude, comportamento, uso_medicacao, tipo_medicacao, criacao, exame_fiv_felv,
+                   foto_gato, foto_exame, foto_carteira, tutor_id):
 
         gato = Gato(nome=nome, tipo=tipo, idade=idade, sexo=sexo, raca=raca, castrado=castrado,
                     vacinado=vacinado, vermifugado=vermifugado, antiparasitado=antiparasitado,

@@ -55,4 +55,3 @@ class ReservaService:
         except Exception as e:
             self.session.rollback()
             return f"Erro ao deletar a reserva: {str(e)}"
-

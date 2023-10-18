@@ -17,7 +17,7 @@ class QuartoService:
         return quarto
 
     def atualizar_quarto(self, quarto_id, nome, tamanho, tipo_quarto, descricao, valor_cliente, valor_resgate,
-                       imagem_quarto, disponivel):
+                         imagem_quarto, disponivel):
         try:
             quarto = self.session.query(Quarto).filter_by(id=quarto_id).first()
 

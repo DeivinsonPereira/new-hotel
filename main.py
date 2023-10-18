@@ -61,4 +61,7 @@ if __name__ == "__main__":
     reserva_service.atualizar_reserva(1, 1, 1, 2, checkin, checkout, 1000.00,
                                       "confirmada", "gato precisa tomar remédio todo dia")
     
+    
     '''
+
+    tutor_service.buscar_tutor_com_gatos(1)

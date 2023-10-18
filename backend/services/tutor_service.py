@@ -66,5 +66,19 @@ class TutorService:
             self.session.rollback()
             return f"Erro ao deletar o tutor: {str(e)}"
 
+    def buscar_tutor_com_gatos(self, tutor_id):
+
+        tutor = self.session.query(Tutor).filter(Tutor.id == tutor_id).join(Tutor.gatos).all()
+
+        # Agora você pode acessar os gatos relacionados a esse tutor
+        for tutor in tutor:
+            print(f"Tutor: {tutor.nome}")
+            print("Gatos:")
+            for gato in tutor.gatos:
+                print(f"Nome do gato: {gato.nome}")
+                # Acesse outras informações do gato, se necessário
+
+        # Não se esqueça de fechar a sessão quando terminar
+        self.session.close()
 
 
