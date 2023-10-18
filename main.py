@@ -1,8 +1,9 @@
 from backend.services.gato_service import GatoService
 from backend.services.tutor_service import TutorService
 from backend.services.quarto_service import QuartoService
-from backend.entities.reserva import Reserva
+from backend.services.reserva_service import ReservaService
 from backend.repositories.database import criar_sessao
+from datetime import datetime
 
 
 if __name__ == "__main__":
@@ -10,6 +11,7 @@ if __name__ == "__main__":
     tutor_service = TutorService(session)
     gato_service = GatoService(session)
     quarto_service = QuartoService(session)
+    reserva_service = ReservaService(session)
 
     '''
     tutor = tutor_service.criar_tutor("Aristolfo", "123-123-123", "Rua 123", "123.123.123-00",
@@ -43,5 +45,20 @@ if __name__ == "__main__":
                                              "img.png", "Não")
     
     quarto_service.deletar_quarto(1)
-    '''
     
+    checkin = datetime(2023, 10, 30, 10, 00)
+    checkout = datetime(2023, 12, 31, 10, 00)
+
+    reserva_service.criar_reserva(1, 1, 1, checkin, checkout, 1000.00,
+                                  "pendente", "gato precisa tomar remédio todo dia", None)
+    
+    
+    
+    reserva_service.deletar_reserva(1)
+    
+    checkin = datetime(2023, 10, 30, 10, 00)
+    checkout = datetime(2024, 12, 31, 10, 30)
+    reserva_service.atualizar_reserva(1, 1, 1, 2, checkin, checkout, 1000.00,
+                                      "confirmada", "gato precisa tomar remédio todo dia")
+    
+    '''

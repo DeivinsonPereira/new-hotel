@@ -19,17 +19,17 @@ class QuartoService:
     def atualizar_quarto(self, quarto_id, nome, tamanho, tipo_quarto, descricao, valor_cliente, valor_resgate,
                        imagem_quarto, disponivel):
         try:
-            gato = self.session.query(Quarto).filter_by(id=quarto_id).first()
+            quarto = self.session.query(Quarto).filter_by(id=quarto_id).first()
 
-            if gato:
-                gato.nome = nome
-                gato.tamanho = tamanho
-                gato.tipo_quarto = tipo_quarto
-                gato.descricao = descricao
-                gato.valor_cliente = valor_cliente
-                gato.valor_resgate = valor_resgate
-                gato.imagem_quarto = imagem_quarto
-                gato.disponivel = disponivel
+            if quarto:
+                quarto.nome = nome
+                quarto.tamanho = tamanho
+                quarto.tipo_quarto = tipo_quarto
+                quarto.descricao = descricao
+                quarto.valor_cliente = valor_cliente
+                quarto.valor_resgate = valor_resgate
+                quarto.imagem_quarto = imagem_quarto
+                quarto.disponivel = disponivel
 
                 self.session.commit()
                 return "Quarto atualizado com sucesso."

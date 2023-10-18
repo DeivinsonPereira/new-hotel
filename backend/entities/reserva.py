@@ -4,8 +4,6 @@ from backend.repositories.database import Base
 from datetime import datetime
 
 
-
-
 class Reserva(Base):
     __tablename__ = 'reserva'
 
