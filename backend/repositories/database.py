@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
+from sqlalchemy import Table, Column, Integer, ForeignKey
 import os
 
 # Determine o caminho relativo para o arquivo de banco de dados
@@ -28,6 +29,15 @@ def criar_banco_dados():
         from backend.entities.gato import Base
         from backend.entities.quarto import Base
         from backend.entities.reserva import Base
+        from backend.entities.orcamento import Base
+
+        reserva_gato_association = Table(
+            'reserva_gato_association',
+            Base.metadata,
+            Column('reserva_id', Integer, ForeignKey('reserva.id')),
+            Column('gato_id', Integer, ForeignKey('gato.id'))
+        )
+
         Base.metadata.create_all(engine)
         print("Tabelas criadas com sucesso!")
     except Exception as e:

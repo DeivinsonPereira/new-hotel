@@ -28,7 +28,8 @@ class Gato(Base):
     tutor_id = Column(Integer, ForeignKey('tutor.id'))
 
     tutor = relationship("Tutor", back_populates="gatos")
-    reserva = relationship("Reserva", back_populates="gatos")
+    reservas = relationship("Reserva", secondary='reserva_gato_association', back_populates='gatos')
+
 
     def __init__(self, nome, tipo, idade, sexo, raca, castrado, vacinado, vermifugado, antiparasitado, historico_saude,
                  comportamento, uso_medicacao, tipo_medicacao, criacao, exame_fiv_felv, foto_gato, foto_exame,

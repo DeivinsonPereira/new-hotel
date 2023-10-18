@@ -23,4 +23,4 @@ class Reserva(Base):
 
     quarto = relationship("Quarto", back_populates="reservas")
     tutor = relationship("Tutor", back_populates="reservas")
-    gatos = relationship("Gato", back_populates="reserva")
+    gatos = relationship("Gato", secondary='reserva_gato_association', back_populates='reservas')
