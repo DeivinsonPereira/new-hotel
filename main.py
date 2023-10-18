@@ -38,11 +38,11 @@ if __name__ == "__main__":
 
     quarto = quarto_service.criar_quarto("Cat World", "1,73 x 2", "Premium",
                                          "Gatil para gatos de clientes", 90.0, 80.0,
-                                         "quarto.png", "Sim")
+                                         "quarto.png")
     
     quarto = quarto_service.atualizar_quarto(1, "Cat Beach", "1.5 x 1.79", "Premium",
                                              "Quarto para gatos de clientes", 70.0, 60.0,
-                                             "img.png", "Não")
+                                             "img.png")
     
     quarto_service.deletar_quarto(1)
     
@@ -62,6 +62,9 @@ if __name__ == "__main__":
                                       "confirmada", "gato precisa tomar remédio todo dia")
     
     
-    '''
-
     tutor_service.buscar_tutor_com_gatos(1)
+    
+    checkin = datetime(2023, 11, 30)
+    checkout = datetime(2023, 11, 25)
+    reserva_service.buscar_reservas(checkin, checkout)
+    '''

@@ -14,6 +14,5 @@ class Quarto(Base):
     valor_cliente = Column(Float)
     valor_resgate = Column(Float)
     imagem_quarto = Column(String)
-    disponivel = Column(Enum("Sim", "Não"))
 
     reservas = relationship("Reserva", back_populates="quarto")

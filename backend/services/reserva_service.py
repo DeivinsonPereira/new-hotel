@@ -1,4 +1,5 @@
 from backend.entities.reserva import Reserva
+from backend.entities.quarto import Quarto
 
 
 class ReservaService:
@@ -55,3 +56,26 @@ class ReservaService:
         except Exception as e:
             self.session.rollback()
             return f"Erro ao deletar a reserva: {str(e)}"
+
+    def buscar_reservas(self, checkin, checkout):
+        if checkin >= checkout:
+            print("A data de check-in deve ser anterior à data de check-out.")
+        else:
+            # Consulta para buscar quartos que não têm reservas dentro do intervalo de datas
+            quartos_disponiveis = self.session.query(Quarto).filter(
+                ~Quarto.reservas.any(
+                    (Reserva.data_checkin <= checkout) &
+                    (Reserva.data_checkout >= checkin)
+                )
+            ).all()
+
+            if not quartos_disponiveis:
+                print("Não há quartos disponíveis para as datas selecionadas.")
+            else:
+                # Agora você tem a lista de quartos disponíveis dentro do intervalo de datas
+                for quarto in quartos_disponiveis:
+                    print(f"Quarto ID: {quarto.id}")
+                    # Acesse outras informações do quarto, se necessário
+
+        # Não se esqueça de fechar a sessão quando terminar
+        self.session.close()

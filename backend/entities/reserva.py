@@ -1,10 +1,13 @@
-from sqlalchemy import Column, Integer, Float, Enum, DateTime, Text, ForeignKey
+from sqlalchemy import Column, Integer, Float, Enum, DateTime, Text, ForeignKey, func
 from sqlalchemy.orm import relationship
 from backend.repositories.database import Base
-from datetime import datetime
+from pytz import timezone
 
 
 class Reserva(Base):
+
+    tz = timezone('America/Sao_Paulo')
+
     __tablename__ = 'reserva'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -16,7 +19,7 @@ class Reserva(Base):
     preco_total = Column(Float)
     status_reserva = Column(Enum("pendente", "confirmada", "cancelada"))
     observacoes = Column(Text)
-    data_criacao = Column(DateTime, default=datetime.utcnow)
+    data_criacao = Column(DateTime(timezone=True), default=func.now(tz))
 
     quarto = relationship("Quarto", back_populates="reservas")
     tutor = relationship("Tutor", back_populates="reservas")
