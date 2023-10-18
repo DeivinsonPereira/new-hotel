@@ -16,3 +16,4 @@ class Tutor(Base):
     comprovante_residencia_foto = Column(String)
 
     gatos = relationship("Gato", back_populates="tutor")
+    reservas = relationship("Reserva", back_populates="tutor")

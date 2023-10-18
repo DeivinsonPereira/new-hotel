@@ -26,6 +26,8 @@ def criar_banco_dados():
     try:
         from backend.entities.tutor import Base
         from backend.entities.gato import Base
+        from backend.entities.quarto import Base
+        from backend.entities.reserva import Base
         Base.metadata.create_all(engine)
         print("Tabelas criadas com sucesso!")
     except Exception as e:
